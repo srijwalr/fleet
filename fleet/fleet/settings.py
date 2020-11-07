@@ -86,10 +86,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
         'NAME': 'DL_TEST_DB',
-        'USER': 'sa',
-        'PASSWORD': 'am@123456',
+        'USER': 'username',
+        'PASSWORD': 'password',
         'HOST': '13.71.87.214',
-        'PORT': '59599',
+        'PORT': 'port',
 
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
