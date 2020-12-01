@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 {% extends "fleet/msfleet.html" %}
+=======
+{% extends "app/msfleet.html" %}
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 {% block title %}:: Driver Detail::{% endblock %}
 {% load static %}
 {% load crispy_forms_tags %}
@@ -61,12 +65,20 @@
 
                 {% if request.user.is_superuser %}
  
+<<<<<<< HEAD
                  <a href="{% url 'fleet:fleet-update' driver.pk %}">
+=======
+                 <a href="{% url 'app:fleet-update' driver.pk %}">
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
                         <button type="submit" class="btn btn-primary btn-flat">Edit Vehicle Details</button>
                  </a> 
                 {% endif %}
 
+<<<<<<< HEAD
                 <a href="{% url 'fleet:fuel-log' %}">
+=======
+                <a href="{% url 'app:fuel-log' %}">
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
                       <button type="submit" class="btn btn-primary btn-flat">Fuel Log</button>
                 </a>         
 

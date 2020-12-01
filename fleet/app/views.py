@@ -3,6 +3,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from app.models import Vehiclemaster, Tyre, FuelLog, Driver, Region, Trip, Tripsheet
 from django.urls import reverse_lazy
+<<<<<<< HEAD
 from django.contrib import auth
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth import (authenticate, login, logout, update_session_auth_hash)
@@ -10,6 +11,11 @@ from django.contrib.auth.forms import (AuthenticationForm, UserCreationForm,
                                        PasswordChangeForm)
 from django.http import HttpResponseRedirect                                       
 from .forms import TyreFormSet, PDriverForm,TDriverForm, TripstartForm, TripendForm, FuelLogForm, ExpenseForm, TripsheetForm, ProfileCreationForm
+=======
+from django.contrib.auth.forms import (AuthenticationForm, UserCreationForm,
+                                       PasswordChangeForm)
+from .forms import TyreFormSet, DriverForm, TripForm, FuelLogForm, ExpenseForm, TripsheetForm
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 from django.db import transaction
 from datetime import datetime, timezone
 from django.db.models import Count
@@ -27,18 +33,25 @@ from django.views.generic import View
 # from .serializers import FleetSerializer , TripsheetSerializers, DriverSerializers
 from .models import Vehiclemaster
 
+<<<<<<< HEAD
 from django.template.loader import get_template
 from . import utils
 
 from django.db.models import Sum
 from slick_reporting.views import SlickReportView
+=======
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 
 
 
 class LogoutView(View):
     def get(self, request):
         logout(request)
+<<<<<<< HEAD
         form = ProfileCreationForm(self.request.POST or None)
+=======
+        form = UserdetailsCreationForm(self.request.POST or None)
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
         context = {
             "form": form,
         }
@@ -122,12 +135,20 @@ def detail(request):
 
 @login_required(login_url='/signin')
 def fleetlist(request):
+<<<<<<< HEAD
     object_list = Vehiclemaster.objects.filter(vehmas_frtyppntr = 6)
+=======
+    object_list = Vehiclemaster.objects.all()
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 
     query = request.GET.get("q")
     if query:
         object_list = object_list.filter(
+<<<<<<< HEAD
             Q(vehmas_code__icontains=query) |
+=======
+            Q(veh__icontains=query) |
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
                 Q(region__name__icontains=query)
             ).distinct()
         
@@ -161,14 +182,22 @@ class DriverDetailView(DetailView):
 @method_decorator(login_required(login_url='/signin'), name='dispatch')    
 class FleetCreate(CreateView):
     model = Vehiclemaster
+<<<<<<< HEAD
     # fields = '__all__'
     fields = ('vehmas_desc','size','manfr','model','chno','engno','reg','region','btryno','btrymodel','insno','insdate','insfile','taxno','taxdate','taxfile','perno','perdate','perfile','fitnno','fitndate','fitnfile','polno','poldate','polfile','welfrno','welfrdate','welfrfile','acc','other','tyreno',)  
+=======
+    fields = ('veh','size','manfr','model','chno','engno','reg','region','btryno','btrymodel','insno','insdate','insfile','taxno','taxdate','taxfile','perno','perdate','perfile','fitnno','fitndate','fitnfile','polno','poldate','polfile','welfrno','welfrdate','welfrfile','acc','other','tyreno',)
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
     success_url = reverse_lazy('app:fleet-list')
 
 @method_decorator(login_required(login_url='/signin'), name='dispatch')
 class FleetTyreCreate(CreateView):
     model = Vehiclemaster
+<<<<<<< HEAD
     fields = ('vehmas_desc','size','manfr','model','chno','engno','reg','region','btryno','btrymodel','insno','insdate','insfile','taxno','taxdate','taxfile','perno','perdate','perfile','fitnno','fitndate','fitnfile','polno','poldate','polfile','welfrno','welfrdate','welfrfile','acc','other','tyreno',)  
+=======
+    fields = ('veh','size','manfr','model','chno','engno','reg','region','btryno','btrymodel','insno','insdate','insfile','taxno','taxdate','taxfile','perno','perdate','perfile','fitnno','fitndate','fitnfile','polno','poldate','polfile','welfrno','welfrdate','welfrfile','acc','other','tyreno',)
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
     success_url = reverse_lazy('app:fleet-list')
 
     def get_context_data(self, **kwargs):
@@ -201,7 +230,11 @@ class FleetUpdate(UpdateView):
 @method_decorator(login_required(login_url='/signin'), name='dispatch')
 class FleetTyreUpdate(UpdateView):
     model = Vehiclemaster
+<<<<<<< HEAD
     fields = ('size','manfr','model','chno','engno','reg','region','btryno','btrymodel','insno','insdate','insfile','taxno','taxdate','taxfile','perno','perdate','perfile','fitnno','fitndate','fitnfile','polno','poldate','polfile','welfrno','welfrdate','welfrfile','acc','other','tyreno',)
+=======
+    fields = ('veh','size','manfr','model','chno','engno','reg','region','btryno','btrymodel','insno','insdate','insfile','taxno','taxdate','taxfile','perno','perdate','perfile','fitnno','fitndate','fitnfile','polno','poldate','polfile','welfrno','welfrdate','welfrfile','acc','other','tyreno',)
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
     success_url = reverse_lazy('app:fleet-list')
 
     def get_context_data(self, **kwargs):
@@ -254,6 +287,7 @@ class FuelLogAdd(CreateView):
 
 @login_required(login_url='/signin')
 def loglist(request):
+<<<<<<< HEAD
     try:
 
         start_date = request.POST.get('start_date')
@@ -266,6 +300,17 @@ def loglist(request):
         })
     except:
         return render(request, 'app/loglist.html', {'error_message': 'Enter dates'})
+=======
+    start_date = request.POST.get('start_date')
+    stop_date = request.POST.get('stop_date')
+    object_list = FuelLog.objects.all()
+    object_list = object_list.filter(date__range=[start_date, stop_date])
+    # print(object_list)
+    return render(request, 'app/logresult.html', {
+        'object_list': object_list,
+    })
+
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 
 @method_decorator(login_required(login_url='/signin'), name='dispatch')
 class FuelLogView(ListView):
@@ -287,7 +332,11 @@ def region_data(request,**kwargs):
     else:
         id = kwargs['region_id']
         region = Region.objects.filter(id=id).first()
+<<<<<<< HEAD
         result = Vehiclemaster.objects.filter(region = region, vehmas_frtyppntr = 6)
+=======
+        result = Vehiclemaster.objects.filter(region = region)
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
         page = request.GET.get('page', 1)
 
         paginator = Paginator(result, 10)
@@ -307,7 +356,11 @@ class FleetView(ListView):
     template_name = "app/home.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+<<<<<<< HEAD
         querydata = Vehiclemaster.objects.filter( vehmas_frtyppntr = 6)
+=======
+        querydata = Vehiclemaster.objects.all()
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
         objectlist1 = []
         objectlist2 = []
         objectlist3 = []
@@ -315,6 +368,7 @@ class FleetView(ListView):
         objectlist5 = []
         objectlist6 = []
         for q in querydata:
+<<<<<<< HEAD
             try:
                 k = q.insdate - datetime.now().date()
                 l = q.taxdate - datetime.now().date()
@@ -383,6 +437,68 @@ class FleetView(ListView):
                 objectlist4 = []
                 objectlist5 = []
                 objectlist6 = []
+=======
+            k = q.insdate - datetime.now().date()
+            l = q.taxdate - datetime.now().date()
+            m = q.perdate - datetime.now().date()
+            n = q.fitndate - datetime.now().date()
+            p = q.poldate - datetime.now().date()
+            r = q.welfrdate - datetime.now().date()
+            if k.days > 30:
+                istatus="scheduled"
+            if k.days <= 30:
+                istatus="duesoon"
+                objectlist1.append(q)
+            if k.days < 0:
+                istatus="overdue"
+
+            if l.days > 30:
+                tstatus="scheduled"
+            if l.days <= 30:
+                tstatus="duesoon"
+                objectlist2.append(q)
+            if l.days < 0:
+                tstatus="overdue"
+
+            if m.days > 30:
+                pstatus="scheduled"
+            if m.days <= 30:
+                pstatus="duesoon"
+                objectlist3.append(q)
+            if m.days < 0:
+                pstatus="overdue"
+
+            if n.days > 30:
+                fstatus="scheduled"
+            if n.days <= 30:
+                fstatus="duesoon"
+                objectlist4.append(q)
+            if n.days < 0:
+                fstatus="overdue"
+
+            if p.days > 30:
+                postatus="scheduled"
+            if p.days <= 30:
+                postatus="duesoon"
+                objectlist5.append(q)
+            if p.days < 0:
+                postatus="overdue"
+
+            if r.days > 30:
+                wstatus="scheduled"
+            if r.days <= 30:
+                wstatus="duesoon"
+                objectlist6.append(q)
+            if r.days < 0:
+                wstatus="overdue"
+
+            q.istatus = istatus
+            q.tstatus = tstatus
+            q.pstatus = pstatus
+            q.fstatus = fstatus
+            q.postatus = postatus
+            q.wstatus = wstatus
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
         # count = Vehiclemaster.objects.filter(status='').aggregate(Count('veh'))
         regions = Region.objects.all()
         context['reminders1'] = objectlist1
@@ -537,6 +653,7 @@ class TripsheetCreate(CreateView):
     template_name = 'app/tripsheet.html'
     success_url = reverse_lazy('app:triplog')
 
+<<<<<<< HEAD
 # @method_decorator(login_required(login_url='/signin'), name='dispatch')
 # class TripCreate(CreateView):
 #     model = Trip
@@ -544,6 +661,15 @@ class TripsheetCreate(CreateView):
 #     template_name = 'app/trip_form.html'
 #     success_url = reverse_lazy('app:trip-list')
 #     # fields = ('no','driver','veh','ftype','start','end','source','dest','region','lr','date')
+=======
+@method_decorator(login_required(login_url='/signin'), name='dispatch')
+class TripCreate(CreateView):
+    model = Trip
+    form_class = TripForm
+    template_name = 'app/trip_form.html'
+    success_url = reverse_lazy('app:trip-list')
+    # fields = ('no','driver','veh','ftype','start','end','source','dest','region','lr','date')
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 
 
 @method_decorator(login_required(login_url='/signin'), name='dispatch')
@@ -595,6 +721,7 @@ def trips(request, filter_by):
 
 
 @method_decorator(login_required(login_url='/signin'), name='dispatch')
+<<<<<<< HEAD
 class PDriverCreate(CreateView):
     model = Driver
     form_class = PDriverForm
@@ -605,6 +732,11 @@ class PDriverCreate(CreateView):
 class TDriverCreate(CreateView):
     model = Driver
     form_class = TDriverForm
+=======
+class DriverCreate(CreateView):
+    model = Driver
+    form_class = DriverForm
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
     success_url = reverse_lazy('app:driver-list')
     # fields = '__all__'
 
@@ -631,6 +763,7 @@ class DriverList(ListView):
     paginate_by = 10
 
 
+<<<<<<< HEAD
 @method_decorator(login_required(login_url='/signin'), name='dispatch')
 class Salaryreport(ListView):
     model = Driver
@@ -762,6 +895,8 @@ def entry(request):
     else:
         return render(request, 'app/msfleet.html', {'error_message': 'Enter a vehicle number'})   
 
+=======
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 # @method_decorator(login_required(login_url='/signin'), name='dispatch')
 # class EmiCreate(CreateView):
 #     model = Emi

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿
 /**
  * @license Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
@@ -23,6 +24,33 @@ var CKBUILDER_CONFIG = {
 		'README.md',
 		'.mailmap'
 	],
+=======
+﻿
+/**
+ * @license Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.html or http://ckeditor.com/license
+ */
+
+/**
+ * This file was added automatically by CKEditor builder.
+ * You may re-use it at any time at http://ckeditor.com/builder to build CKEditor again.
+ * 
+ * NOTE: 
+ *    This file is not used by CKEditor, you may remove it.
+ *    Changing this file will not change your CKEditor configuration.
+ */
+
+var CKBUILDER_CONFIG = {
+	skin: 'moono',
+	preset: 'standard',
+	ignore: [
+		'dev',
+		'.gitignore',
+		'.gitattributes',
+		'README.md',
+		'.mailmap'
+	],
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 	plugins : {
 		'about' : 1,
 		'a11yhelp' : 1,

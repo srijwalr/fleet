@@ -30,12 +30,21 @@
                   <td>
                     {{ forloop.counter }}
                   </td>
+<<<<<<< HEAD
               <td><a href="{% url 'app:fleet-detail' fleet.vehmas_id %}">{{ fleet.vehmas_code }} </td> <td> {{ fleet.manfr }} </td> 
                 {% if request.user.is_superuser %}
                 <td> <a
                         href="{% url 'app:fleet-update' fleet.vehmas_id %}">Edit</a></td>
                 {% endif %}
                    <td> <a href="{% url 'app:fleet-delete' fleet.vehmas_id %}">Delete</a></td></tr>
+=======
+              <td><a href="{% url 'app:fleet-detail' fleet.id %}">{{ fleet.veh }} </td> <td> {{ fleet.manfr }} </td> 
+                {% if request.user.is_superuser %}
+                <td> <a
+                        href="{% url 'app:fleet-update' fleet.pk %}">Edit</a></td>
+                {% endif %}
+                   <td> <a href="{% url 'app:fleet-delete' fleet.pk %}">Delete</a></td></tr>
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
                 </td>
             {% empty %}
                 <td>No fleet yet.</td>

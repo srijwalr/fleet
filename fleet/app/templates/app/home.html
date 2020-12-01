@@ -16,6 +16,7 @@
           </div>
         </div>
         <!-- page start-->
+<<<<<<< HEAD
 {% if request.user.usrd_usrcatpntr != 8 %}
   
 {% if request.user.is_superuser %}
@@ -30,6 +31,57 @@
   <a href="{% url 'app:region' request.user.usrd_region_id %}" class="btn btn-primary">WAREHOUSE DATA</button></a>
 </div> 
 
+=======
+
+<!-- <div class="card w-75">
+  <div class="card-body">
+    <h5 class="card-title">USER</h5>
+    <p style = "color: #fff" class="card-text">Click here to create a user</p>
+    <a href="#" class="btn btn-primary">Create User</a>
+  </div>
+</div>
+<br>
+<br> -->        
+{% if request.user.is_superuser %}
+
+ <section class="panel">
+              <div class="panel-body">
+                <p class="text-center">
+                  <span class="btn btn-default btn-sm"><a href="{% url 'app:fleet-list' %}">FLEET LIST</a></span>
+                  <span class="btn btn-default btn-sm"><a href="{% url 'app:driver-list' %}">DRIVER LIST</a></span>
+                </p>
+              </div>
+ </section>
+
+
+
+<!-- <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <a href="{% url 'app:fleet-list' %}"><button class="btn btn-danger btn-lg btn-block">FLEET LIST</button></a>
+    <br>
+    <a href="{% url 'app:driver-list' %}"><button class="btn btn-danger btn-lg btn-block">DRIVER LIST</button></a>
+      <br>
+  </div>
+</div> -->
+
+{% else %}
+
+ <section class="panel">
+              <div class="panel-body">
+                <p class="text-center">
+                  <span class="btn btn-default btn-sm"><a href="{% url 'app:region' request.user.usrd_region_id %}">FLEET LIST</a></span>
+                  <span class="btn btn-default btn-sm"><a href="{% url 'app:driver-list' %}">DRIVER LIST</a></span>
+                </p>
+              </div>
+ </section>
+
+<!--     <a href="{% url 'app:region' request.user.usrd_region_id %}"><button class="btn btn-danger btn-lg btn-block">FLEET LIST </button></a>
+    <br>
+    <a href="{% url 'app:driver-list' %}"><button class="btn btn-danger btn-lg btn-block">DRIVER LIST</button></a>
+      <br> -->
+  </div>
+</div>
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 {% endif %}
 
 {% if request.user.is_superuser %}
@@ -37,6 +89,7 @@
 <div class="jumbotron jumbotron-fluid">
 
   <div class="container">
+<<<<<<< HEAD
       {% comment %} <h3>Warehouses</h3><br> {% endcomment %}
 
         <div class="row">
@@ -56,6 +109,42 @@
 
         </div>
 
+=======
+      <h3>Warehouses</h3><br>
+
+        <div class="row">
+                {% for region in regions %}
+                <div class="col-lg-4">
+                <div class="container1">
+                  <img src="{{ region.image.url }}" alt="Avatar" class="image" style="width:100%">
+                  <div class="middle">
+                    <div class="text"> <a href="{% url 'app:region' region.id  %}">{{ region.name }}</a></div>
+                  </div>
+                </div>
+              </div>
+<!--           <div class="col-lg-4">
+            <section class="panel">
+              <div class="panel-body">  <a href="{% url 'app:region' region.id  %}" class="list-group-item list-group-item-action">{{ region.name }}</a>
+              </div>
+            </section>
+          </div> -->
+                    {% endfor %}
+
+
+        </div>
+<!--       <div class="list-group">
+  <h3 class="list-group-item list-group-item-action active">
+    Warehouses
+  </h3>  
+
+  {% for region in regions %}
+
+  <a href="{% url 'app:region' region.id  %}" class="list-group-item list-group-item-action">{{ region.name }}</a>
+
+  {% endfor %}
+
+</div> -->
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 
   </div>
 
@@ -65,7 +154,11 @@
 {% endif %}
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
+<<<<<<< HEAD
       <h3 class = "text-center">Vehicle Reminders</h3><br>
+=======
+      <h3>Vehicle Reminders</h3><br>
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 
 
       <div class="row">
@@ -192,7 +285,10 @@
 
   </div>
 </div>
+<<<<<<< HEAD
 {% endif %}
+=======
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 
 
 

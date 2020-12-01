@@ -1,9 +1,16 @@
 from django import forms
+<<<<<<< HEAD
 from app.models import Tyre, Vehiclemaster, Accessories, Driver, Trip, FuelLog, Tripsheet,Profile
 from django.forms import ModelForm, inlineformset_factory, ModelMultipleChoiceField
 from django_select2.forms import ModelSelect2Widget
 from dal import autocomplete
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+=======
+from app.models import Tyre, Vehiclemaster, Accessories, Driver, Trip, FuelLog, Tripsheet
+from django.forms import ModelForm, inlineformset_factory, ModelMultipleChoiceField
+from django_select2.forms import ModelSelect2Widget
+from dal import autocomplete
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 # from pip import autocomplete
 
 
@@ -21,6 +28,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 # 		super(VehiclemasterForm, self).__init__(*args, **kwargs)
 # 		self.fields["acc"].widget = CheckboxSelectMultiple()
 # 		self.fields["acc"].queryset = Accessories.objects.all()
+<<<<<<< HEAD
 class ProfileCreationForm(UserCreationForm):
     
     class Meta:
@@ -32,6 +40,8 @@ class ProfileChangeForm(UserChangeForm):
     class Meta:
         model = Profile
         fields = ('name', 'password','usrcatpntr','region')
+=======
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 
 class FuelLogForm(ModelForm):
 
@@ -62,6 +72,7 @@ class TyreForm(ModelForm):
 TyreFormSet = inlineformset_factory(Vehiclemaster, Tyre,
                                             form=TyreForm, extra=5)
 
+<<<<<<< HEAD
 
 class TDriverForm(ModelForm):
 
@@ -87,6 +98,13 @@ class PDriverForm(ModelForm):
 	class Meta:
 		model= Driver
 		fields = ('name','phone','region','address','salary','photo','licence','lno', 'lexpiry','rationcard','aadhar')
+=======
+class DriverForm(ModelForm):
+
+	class Meta:
+		model= Driver
+		exclude = ('bata', 'is_settled','advance','expense')
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 
 class ExpenseForm(ModelForm):
 
@@ -123,6 +141,7 @@ class TripForm(ModelForm):
 
 
             ),
+<<<<<<< HEAD
         }
 
 
@@ -158,3 +177,6 @@ class TripendForm(ModelForm):
 	# 	if instance and instance.pk:
 	# 		self.fields['veh'].widget.attrs['readonly'] = True
 	# 		self.fields['tripno'].widget.attrs['readonly'] = True
+=======
+        }
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b

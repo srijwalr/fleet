@@ -15,7 +15,12 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
+<<<<<<< HEAD
 # PROJECT_DIR = os.path.dirname(__file__)
+=======
+PROJECT_DIR = os.path.dirname(__file__)
+
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -33,16 +38,25 @@ ALLOWED_HOSTS = ['localhost','192.168.1.255','127.0.0.0.0','13.71.87.214']
 
 INSTALLED_APPS = [
     'app',
+<<<<<<< HEAD
     'dal',
     'dal_select2',
     'crispy_forms',
     # 'slick_reporting',
+=======
+    # 'user',
+    'dal',
+    'dal_select2',
+    'django.contrib.gis',
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # 'django.contrib.postgres',
     'django.contrib.staticfiles',
+    'rest_framework', 
 ]
 
 MIDDLEWARE = [
@@ -75,7 +89,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'fleet.wsgi.application'
 
-
+AUTH_USER_MODEL = 'app.Profile'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -83,10 +97,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
         'NAME': 'DL_TEST_DB',
-        'USER': 'sa',
-        'PASSWORD': 'am@123456',
+        'USER': 'username',
+        'PASSWORD': 'password',
         'HOST': '13.71.87.214',
-        'PORT': '59599',
+        'PORT': 'port',
 
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
@@ -134,6 +148,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+<<<<<<< HEAD
 LOGIN_URL: 'app:signin'
 LOGIN_REDIRECT_URL = 'app:fleet'
 LOGout_REDIRECT_URL = 'app:signin'
@@ -148,3 +163,17 @@ STATIC_URL = '/static/'
 # STATICFILES_DIRS = (
 #     os.path.join(PROJECT_DIR, 'static'),
 # )
+=======
+LOGIN_URL:'app:signin'
+LOGIN_REDIRECT_URL = 'app:fleet'
+LOGOUT_REDIRECT_URL = 'app:signin'
+
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_DIR, 'staticfiles'),
+)
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b

@@ -20,11 +20,16 @@ app_name = 'app'
 
 urlpatterns = [
     url(r'signin',views.sign_in, name= 'signin'),
+<<<<<<< HEAD
     url(r'signout', views.LogoutView.as_view(), name = 'signout'),
     url(r'^$', views.FleetView.as_view(), name='fleet'),
     url(r'driver/list/', views.DriverList.as_view(), name='driver-list'),
     # url(r'salary/', views.Salaryreport.as_view(), name = 'salary'),
     url(r'^export/xls/$', views.salary, name='export'),
+=======
+    url(r'^$', views.FleetView.as_view(), name='fleet'),
+    url(r'driver/list/', views.DriverList.as_view(), name='driver-list'),
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
     url(r'loglist/', views.FuelLogView.as_view(), name='logs'),
     url(r'tripgen/', views.Tripgen, name='tripgen'),
     url(r'detail1/', views.detail, name='detail'),
@@ -37,6 +42,7 @@ urlpatterns = [
     url(r'welfare/', views.WelfareView.as_view(), name='welfare'),
     url(r'triplog/', views.TripsheetList.as_view(), name='triplog'),
     url(r'triplist/', views.TripList.as_view(), name='trip-list'),
+<<<<<<< HEAD
     url(r'gettrip/', gettrip, name='gettrip'),
     url(r'entry/', entry, name='entry'),
     url(r'list/', views.fleetlist, name='fleet-list'),
@@ -46,6 +52,15 @@ urlpatterns = [
     url(r'tripsheet/add/$', views.TripsheetCreate.as_view(), name='tripsheet'),
     # url(r'trip/add/$', views.TripCreate.as_view(), name='trip'),
     url(r'fleet/(?P<pk>[0-9]+)/$', views.FleetUpdate.as_view(), name='fleet-update'),
+=======
+    url(r'list/', views.fleetlist, name='fleet-list'),
+    url(r'driverdetail/(?P<pk>[0-9]+)/$', views.DriverDetailView.as_view(), name='driver-detail'),
+    url(r'detail/(?P<pk>[0-9]+)/$', views.FleetDetailView.as_view(), name='fleet-detail'),
+    url(r'fleet/add/$', views.FleetTyreCreate.as_view(), name='fleet-add'),
+    url(r'tripsheet/add/$', views.TripsheetCreate.as_view(), name='tripsheet'),
+    url(r'trip/add/$', views.TripCreate.as_view(), name='trip'),
+    url(r'fleet/(?P<pk>[0-9]+)/$', views.FleetTyreUpdate.as_view(), name='fleet-update'),
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
     url(r'^trips/(?P<filter_by>[a-zA_Z]+)/$', views.trips, name='list'),    
     url(r'trip/(?P<pk>[0-9]+)/$', views.TripUpdate.as_view(), name='trip-update'),
     url(r'fleet/(?P<pk>[0-9]+)/delete/$', views.FleetDelete.as_view(), name='fleet-delete'),
@@ -55,9 +70,13 @@ urlpatterns = [
     url(r'region/(?P<region_id>[0-9]+)/$',views.region_data, name = 'region'),
     url(r'driver/(?P<pk>[0-9]+)/$', views.DriverUpdate.as_view(), name='driver-update'),
     url(r'expense/(?P<pk>[0-9]+)/$', views.DriverExpense.as_view(), name='expense-update'),
+<<<<<<< HEAD
     url(r'pdriver/add/$', views.PDriverCreate.as_view(), name='pdriver'),
     url(r'tdriver/add/$', views.TDriverCreate.as_view(), name='tdriver'),
     # url(r'driver/add/$', views.DriverCreate.as_view(), name='driver')
+=======
+    url(r'driver/add/$', views.DriverCreate.as_view(), name='driver')
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
     # url(r'emi/add/$', views.EmiCreate.as_view(), name='emi-add'),
     # path('api', include(router.urls)), 
     # path('api-auth/', include('rest_framework.urls')) 

@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="img/favicon.png">
+<<<<<<< HEAD
   {% load staticfiles %}
   {% load crispy_forms_tags %}
 
@@ -12,6 +13,11 @@
 
 
   <title>{% block title %}:: Fleet ::{% endblock %}</title>
+=======
+
+  <title>{% block title %}:: Fleet ::{% endblock %}</title>
+  {% load staticfiles %}
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
   <!-- Bootstrap CSS -->
   <link href="{% static 'app/css/bootstrap.min.css' %}" rel="stylesheet" >
   <!-- bootstrap theme -->
@@ -21,7 +27,10 @@
   <link href="{% static 'app/css/elegant-icons-style.css' %}" rel="stylesheet" >
   <link href="{% static 'app/css/font-awesome.min.css' %}" rel="stylesheet" >
   <!-- Custom styles -->
+<<<<<<< HEAD
   
+=======
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
   <link href="{% static 'app/css/style1.css' %}" rel="stylesheet">
   <link href="{% static 'app/css/style-responsive.css' %}" rel="stylesheet" >
 
@@ -34,8 +43,11 @@
 
 </head>
 
+<<<<<<< HEAD
 {% if request.user.usrd_usrcatpntr.id != 8 %}
 
+=======
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 <body>
   <!-- container section start -->
   <section id="container" class="">
@@ -47,7 +59,11 @@
       </div>
 
       <!--logo start-->
+<<<<<<< HEAD
           <a href="{% url 'app:fleet' %}"><img class = "logo" src="{% static 'newlogo.png' %}" /></a>
+=======
+          <a href="{% url 'app:fleet' %}"><img class = "logo" src="{% static 'logo3.jpg' %}" /></a>
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
       <!--logo end-->
       <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'app:fleet-list' %}">
           <div class="form-group">
@@ -62,8 +78,13 @@
           <!-- user login dropdown start-->
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+<<<<<<< HEAD
                             <span>{{ user.usrd_region }}</span>
                             <span>{{ user.username }}</span>
+=======
+                            <span class="warehouse">{{ user.region }}</span>
+                            <span class="username">{{ user.username }}</span>
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
                             <b class="caret"></b>
                         </a>
             <ul class="dropdown-menu extended logout">
@@ -72,7 +93,11 @@
                 <a href="#"><i class="icon_profile"></i> My Profile</a>
               </li>
               <li>
+<<<<<<< HEAD
                 <a href="{% url 'app:signout' %}"><i class="icon_key_alt"></i> Log Out</a>
+=======
+                <a href="{% url 'user:signout' %}"><i class="icon_key_alt"></i> Log Out</a>
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
               </li>
             </ul>
           </li>
@@ -82,13 +107,19 @@
       </div>
     </header>
     <!--header end-->
+<<<<<<< HEAD
     <!--sidebar start-->  
+=======
+
+    <!--sidebar start-->
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
     <aside>
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
           <li class="">
             <a class="" href="{% url 'app:fleet' %}">
+<<<<<<< HEAD
                           <i class="icon_house"></i>
                           <span>Fleet Home</span>
                       </a>
@@ -112,6 +143,12 @@
             </ul>
           </li>
 
+=======
+                          <i class="icon_house_alt"></i>
+                          <span>Fleet Home</span>
+                      </a>
+          </li>
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 
           {% if request.user.is_superuser %}
    
@@ -119,6 +156,7 @@
           <li class="">
             <a class="" href="{% url 'app:fleet-add' %}">
                           <i class="fa fa-plus-circle"></i>
+<<<<<<< HEAD
                           <span>New Fleet</span>
                       </a>
           </li>
@@ -133,10 +171,17 @@
           </li> {% endcomment %}
 
 
+=======
+                          <span>Fleet Entry</span>
+                      </a>
+          </li>
+          
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
         {% endif %}
 
         {% if not request.user.is_superuser %}
 
+<<<<<<< HEAD
 
           {% comment %} 
           <li class="">
@@ -145,6 +190,14 @@
                           <span>New Tyre</span>
                       </a>
           </li> {% endcomment %}
+=======
+          <li class="">
+            <a class="" href="{% url 'app:detail' %}">
+                          <i class="fa fa-exchange"></i>
+                          <span>Trip</span>
+                      </a>
+          </li>
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 
           <li class="">
             <a class="" href="{% url 'app:trip-list' %}">
@@ -155,8 +208,13 @@
 
           <li class="">
             <a class="" href="{% url 'app:logs' %}">
+<<<<<<< HEAD
                           <i class="icon_document"></i>
                           <span>Fuel Logs</span>
+=======
+                          <i class="icon_document_alt"></i>
+                          <span>Logs</span>
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
                       </a>
           </li>
 
@@ -166,8 +224,11 @@
         <!-- sidebar menu end-->
       </div>
     </aside>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
     <!--sidebar end-->
 {% block content %}
     <!--main content start-->
@@ -199,10 +260,14 @@
     <!--main content end-->
   </section>
   <!-- container section end -->
+<<<<<<< HEAD
 
   <!-- javascripts -->
 
 
+=======
+  <!-- javascripts -->
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
   <script src="{% static 'app/js/jquery.js' %}"></script>
   <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
   <!-- nice scroll -->
@@ -210,6 +275,7 @@
   <script src="{% static 'app/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
   <!--custome script for all page-->
   <script src="{% static 'app/js/scripts.js' %}"></script>
+<<<<<<< HEAD
 {% endblock %}
 </body>
 
@@ -307,4 +373,11 @@
 
 
 
+=======
+
+  
+{% endblock %}
+</body>
+
+>>>>>>> 32ca857026708f222b9c07f2a31fd338ffc1149b
 </html>
