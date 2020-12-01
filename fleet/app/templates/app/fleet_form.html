@@ -1,0 +1,190 @@
+{% extends "app/msfleet.html" %}
+{% block title %}:: Fleet Form ::{% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="col-md-8">
+                  <div class="col">
+                    <h3 class="text-white mb-5">Add Fleet</h3>
+                        <form action="" enctype="multipart/form-data" method="post">{% csrf_token %}
+                        {% csrf_token %}
+                        {{ form|crispy }}
+ <!--                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            {{ form.veh|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.size|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.manfr|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.model|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.chno|as_crispy_field }}
+                          </div> 
+                          <div class="form-group col-md-6">
+                            {{ form.engno|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.reg|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.region|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.btryno|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.btrymodel|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-4">
+                            {{ form.insno|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-4">
+                            {{ form.insdate|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-4">
+                            {{ form.insfile|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.taxno|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.taxdate|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.taxfile|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.perno|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.perdate|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.perfile|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.fitnno|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.fitndate|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.fitnfile|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.polno|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.poldate|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6">
+                            {{ form.polfile|as_crispy_field }}
+                          </div>
+                           <div class="form-group col-md-6">
+                            {{ form.welfrno|as_crispy_field }}
+                          </div>
+                           <div class="form-group col-md-6">
+                            {{ form.welfrdate|as_crispy_field }}
+                          </div>
+                           <div class="form-group col-md-6">
+                            {{ form.welfrfile|as_crispy_field }}
+                          </div>
+                           <div class="form-group col-md-6">
+                            {{ form.acc|as_crispy_field }}
+                          </div>
+                           <div class="form-group col-md-6">
+                            {{ form.other|as_crispy_field }}
+                          </div>
+                           <div class="form-group col-md-6">
+                            {{ form.tyreno|as_crispy_field }}
+                          </div>
+                        </div>
+                </div> -->
+                    <!-- <table class="table">
+                        {{ tyres.management_form }}
+
+                        {% for form in tyres.forms %}
+                            {% if forloop.first %}
+                                <thead>
+                                <tr>
+                                    {% for field in form.visible_fields %}
+                                        <th>{{ field.label|capfirst }}</th>
+                                    {% endfor %}
+                                </tr>
+                                </thead>
+                            {% endif %}
+                            <tr class="{% cycle row1 row2 %} formset_row">
+                                {% for field in form.visible_fields %}
+                                    <td>
+                                        {# Include the hidden fields in the form #}
+                                        {% if forloop.first %}
+                                            {% for hidden in form.hidden_fields %}
+                                                {{ hidden }}
+                                            {% endfor %}
+                                        {% endif %}
+                                        {{ field.errors.as_ul }}
+                                        {{ field }}
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>  -->
+                    <input type="submit" class="btn btn-primary " value="Save"/> <a href="{% url 'fleet:fleet-list' %}" class="btn btn-default">back to the list</a>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+        <!-- page end-->
+      </section>  
+    </section>
+    <!--main content end-->
+  <!-- container section end -->
+  <!-- javascripts -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="{% static 'formset/jquery.formset.js' %}"></script>
+    <script type="text/javascript">
+        $('.formset_row').formset({
+            addText: 'add tyre',
+            deleteText: 'remove',
+            prefix: 'tyre_set'
+        });
+    </script>
+
+  <script src="{% static 'app/js/jquery.js' %}"></script>
+  <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+  <!-- nice scroll -->
+  <script src="{% static 'app/js/jquery.scrollTo.min.js' %}"></script>
+  <script src="{% static 'app/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
+  <!--custome script for all page-->
+  <script src="{% static 'app/js/scripts.js' %}"></script>
+
+  
+{% endblock %}
+</body>
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+

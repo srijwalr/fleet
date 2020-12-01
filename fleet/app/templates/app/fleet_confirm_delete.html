@@ -1,0 +1,14 @@
+{% extends "app/msfleet.html" %}
+{% block title %}:: Delete Fleet ::{% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h2></h2>
+    <hr>
+    <div>
+        <form action="" method="post">{% csrf_token %}
+            <p>Are you sure you want to delete "{{ object }}"?</p>
+            <input type="submit" value="Confirm"/>
+        </form>
+    </div>
+{% endblock %}

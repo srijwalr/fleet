@@ -1,0 +1,33 @@
+{% extends "dash.html" %}
+{% load static %}
+{% block title %}:: Warehouse :: {{ super }}{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form method="POST" action="{% url 'app:whm' %}">
+    <h3 class="text-white mb-5">Create Warehouse</h3>
+    {% csrf_token %}
+    <br>
+    {{ form|crispy }}
+    <br>
+    <br>
+    <input style = "border-radius:6px;" type="submit" class="button-primary" value="Create Warehouse">
+</form>
+
+  <script src="{% static 'app/js/jquery.js' %}"></script>
+  <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+  <!-- nice scroll -->
+  <script src="{% static 'app/js/jquery.scrollTo.min.js' %}"></script>
+  <script src="{% static 'app/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
+  <!--custome script for all page-->
+  <script src="{% static 'app/js/scripts.js' %}"></script>
+    
+<style>
+form{
+    padding-top:100px;
+    padding-left:400px; 
+    color:#fff;
+    width: 800px;
+}
+</style>
+{% endblock %}

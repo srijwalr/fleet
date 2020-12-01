@@ -1,0 +1,127 @@
+{% extends "app/msfleet.html" %}
+{% block title %}:: Fuel Log ::{% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+    <!--sidebar end-->
+{% block content %}
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+
+          <div class="col-lg-12">
+            <h2>Log Details</h2>
+          <div> 
+               <div class="box-body table-responsive">
+                  <table class="table table-bordered table-hover">
+                    <tr>
+                       <td>Vehicle</td>
+                       <td>{{fuellog.veh}}</td>
+                    </tr>
+                    <tr>
+                       <td>Size</td>
+                       <td>{{fuellog.size}}</td>
+                    </tr>
+                    <tr>
+                       <td>Manufacturer</td>
+                       <td>{{fuellog.manfr}}</td>
+                    </tr>
+                    <tr>
+                       <td>Number</td>
+                       <td>{{fuellog.no}}</td>
+                       </td>
+                    </tr>
+                    <tr>
+                       <td>Date</td>
+                       <td>{{fuellog.date}}</td>
+                    </tr>
+                    <tr>
+                      {% if fuellog.diesel %}
+
+                       <td>Diesel</td>
+                        <td>
+                            {{ fuellog.diesel }}
+                        </td>
+                    </tr>
+                   {% endif %}
+
+                    <tr>
+                      {% if fuellog.petrol %}
+
+                       <td>Petrol</td>
+                        <td>
+                           {{ fuellog.petrol }}
+                        </td>
+                    </tr>
+                   {% endif %}
+
+                    <tr>
+                      {% if fuellog.lub %}
+
+                       <td>Lubricants</td>
+                        <td>
+                           {{ fuellog.lub }}
+                        </td>
+                    </tr>
+                   {% endif %}
+
+                    <tr>
+                      {% if fuellog.othr %}
+
+                       <td>Others</td>
+                        <td>
+                           {{ fuellog.othr }}
+                        </td>
+                    </tr>
+                   {% endif %}
+
+                    <tr>
+                      {% if fuellog.othr %}
+
+                       <td>Others</td>
+                        <td>
+                           {{ fuellog.othr }}
+                        </td>
+                    </tr>
+                   {% endif %}
+                    
+                    <tr>
+                       <td>Odo Reading</td>
+                       <td>{{fuellog.odo}}</td>
+                    </tr>
+
+                    <tr>
+                       <td>Fuel(in Rs.)</td>
+                       <td>{{fuellog.fuel}}</td>
+                    </tr>
+
+
+                  </table>             
+
+             </div>
+          </section>
+          </div>
+        </div>
+      
+      </section>  
+    </section>
+    <!--main content end-->
+  </section>
+  <!-- container section end -->
+  <!-- javascripts -->
+
+  <script src="{% static 'app/js/jquery.js' %}"></script>
+  <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+  <!-- nice scroll -->
+  <script src="{% static 'app/js/jquery.scrollTo.min.js' %}"></script>
+  <script src="{% static 'app/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
+  <!--custome script for all page-->
+  <script src="{% static 'app/js/scripts.js' %}"></script>
+
+  
+{% endblock %}
+</body>
+
+</html>
+

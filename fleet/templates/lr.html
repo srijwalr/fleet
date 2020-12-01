@@ -1,0 +1,80 @@
+{% extends "dash.html" %}
+{% block title %}::Lorry Receipt::{% endblock %}
+{% block das %}active{% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block jquery %}
+<script>
+    $(document).ready(function(){
+        $('input[type="checkbox"]').click(function(){
+            if($(this).prop("checked") == true){
+                alert("Checkbox is checked.");
+            }
+            else if($(this).prop("checked") == false){
+                alert("Checkbox is unchecked.");
+            }
+        });
+    });
+</script>
+{% endblock %}
+
+
+{% block content %}
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h3> Lorry Receipt</h3>
+                    <form action="." method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        Upload excel file
+                        <input type="file" name="excel_file" style="color: #fff; border: 1px solid black; padding: 5px;" required="required">    
+                        <br>
+                        <input type="submit"
+                        value="Upload"
+                        style="border: 1px solid green; padding:5px; border-radius: 6px; cursor: pointer;">
+                        <br>
+                        <input type="checkbox" name="LR" value="LR"> FG 
+                        <input type="checkbox" name="Replace" value="Replace"> Replace<br>
+                        <br>
+                        <div class = "cell">
+                            {% for row in excel_data %}
+                            {% for cell in row %}
+                            {{ cell  }}&nbsp;&nbsp;
+                            {% endfor %}
+                            <br>
+                            {% endfor %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- row -->
+
+
+  <script src="{% static 'app/js/jquery.js' %}"></script>
+  <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+  <!-- nice scroll -->
+  <script src="{% static 'app/js/jquery.scrollTo.min.js' %}"></script>
+  <script src="{% static 'app/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
+  <!--custome script for all page-->
+  <script src="{% static 'app/js/scripts.js' %}"></script>
+
+<style>
+h3{
+    color:#fff;
+}
+.container{
+
+    padding-top:100px;
+}
+form{
+    padding-top:50px;
+    color:#fff;
+    width: 500px;
+}
+{% endblock %}
+
+</body>
+
+</html>

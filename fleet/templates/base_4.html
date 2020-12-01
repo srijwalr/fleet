@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/favicon.png">
+
+  <title>{% block title %}:: Dashboard ::{% endblock %}</title>
+  {% load staticfiles %}
+  <!-- Bootstrap CSS -->
+  <link href="{% static 'app/css/bootstrap.min.css' %}" rel="stylesheet" >
+  <!-- bootstrap theme -->
+  <link href="{% static 'app/css/bootstrap-theme.css' %}" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="{% static 'app/css/elegant-icons-style.css' %}" rel="stylesheet" >
+  <link href="{% static 'app/css/font-awesome.min.css' %}" rel="stylesheet" >
+  <!-- Custom styles -->
+  <link href="{% static 'app/css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'app/css/style-responsive.css' %}" rel="stylesheet" >
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+  <!--[if lt IE 9]>
+      <script src="{% static 'js/html5shiv.js' %}"></script>
+      <script src="{% static 'js/respond.min.js' %}"></script>
+      <script src="{% static 'js/lte-ie7.js' %}"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+  <!-- container section start -->
+  <section id="container" class="">
+    <!--header start-->
+
+    <header class="header dark-bg">
+      <div class="toggle-nav">
+        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+      </div>
+
+      <!--logo start-->
+          <a href="{% url 'app:dash' %}"><img class = "logo" src="{% static 'logo.jpg' %}" /></a>
+      <!--logo end-->
+
+      <div class="top-nav notification-row">
+        <!-- notificatoin dropdown start-->
+        <ul class="nav pull-right top-menu">
+
+          <!-- user login dropdown start-->
+          <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="username">{{ user.username }}</span>
+                            <b class="caret"></b>
+                        </a>
+            <ul class="dropdown-menu extended logout">
+              <div class="log-arrow-up"></div>
+              <li class="eborder-top">
+                <a href="#"><i class="icon_profile"></i> My Profile</a>
+              </li>
+              <li>
+                <a href="{% url 'app:signout' %}"><i class="icon_key_alt"></i> Log Out</a>
+              </li>
+            </ul>
+          </li>
+          <!-- user login dropdown end -->
+        </ul>
+        <!-- notificatoin dropdown end-->
+      </div>
+    </header>
+    <!--header end-->
+
+    <!--sidebar start-->
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+          <li class="">
+            <a class="" href="{% url 'app:dash' %}">
+                          <i class="icon_house_alt"></i>
+                          <span>Dashboard</span>
+                      </a>
+          </li>
+
+          <li class="sub-menu ">
+            <a href="javascript:;" class="">
+                          <i class="icon_documents_alt"></i>
+                          <span>Accounts</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+            <ul class="sub">
+              <li><a class="" href="{% url 'accounts:voucher' %}">Transactions</a></li>
+              <li><a class="" href="{% url 'accounts:duplicate' %}"><span>Utilites</span></a></li>
+              <li><a class="" href="{% url 'accounts:delete' %}"><span>Reports</span></a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+    <!--sidebar end-->
+{% block content %}
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 style = "color: #fff" class="page-header"><i class="fa fa-tachometer"></i> Dashboard</h3>
+          </div>
+        </div>
+        <!-- page start-->
+
+<!-- <div class="card w-75">
+  <div class="card-body">
+    <h5 class="card-title">USER</h5>
+    <p style = "color: #fff" class="card-text">Click here to create a user</p>
+    <a href="#" class="btn btn-primary">Create User</a>
+  </div>
+</div>
+<br>
+<br> -->        
+<br>
+{% if request.user.is_superuser %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h3 class="display-4">USER</h1>
+    <p class="lead">Click here to create user</p>
+    <a href="{% url 'app:register' %}" class="btn btn-primary">Create User</a>
+  </div>
+</div>
+<br>
+
+<!-- <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h3 class="display-4">WAREHOUSE</h1>
+    <p class="lead">Click here to create Warehouse</p>
+    <a href="{% url 'app:whm' %}" class="btn btn-primary">Create Warehouse</a>
+  </div>
+</div> -->
+
+{% endif %}
+<br>
+
+{% if request.user.is_superuser %}
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h3 class="display-4">FLEET MANAGEMENT</h1>
+      <br>
+    <img class = "img-responsive" src="{% static 'fleet.png' %}" width = "1200" height="600">   
+  </div>
+</div>
+{% endif %}
+
+<!-- <div class="card w-50">
+  <div class="card-body">
+    <h5 class="card-title">WAREHOUSE DASHBOARD</h5>
+              <h4 style="color: #FFF">Select Warehouse:</h4>
+               <select>
+                <option value="">Whirlpool Sales Kochi</option>
+                <option value="">Godrej Kochi</option>
+                <option value="">Godrej Calicut</option>
+                <option value="">Whirlpool Sales Banglore</option>
+                <option value="">Godrej Branch Banglore</option>
+                <option value="">Godrej Hub Banglore</option>
+               </select> <br><br>
+              <p class="">Quantity:</p>
+  </div>
+</div>
+ -->
+        <!-- page end-->
+      </section>  
+    </section>
+    <!--main content end-->
+  </section>
+  <!-- container section end -->
+  <!-- javascripts -->
+  <script src="{% static 'app/js/jquery.js' %}"></script>
+  <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+  <!-- nice scroll -->
+  <script src="{% static 'app/js/jquery.scrollTo.min.js' %}"></script>
+  <script src="{% static 'app/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
+  <!--custome script for all page-->
+  <script src="{% static 'app/js/scripts.js' %}"></script>
+
+  
+{% endblock %}
+</body>
+
+</html>

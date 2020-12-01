@@ -1,0 +1,134 @@
+{% extends "app/msfleet.html" %}
+{% block title %}:: Fuel Log::{% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+ <!--sidebar end-->
+{% block content %}
+    <!--main content start-->
+      <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+          <div class="col-lg-12">
+            <h2>Fuel Logs</h2>
+          <form class="button" role="search" method="POST" action="{% url 'app:logresult' %}">
+            {% csrf_token %}            
+            <div class="form-group form-row">
+                <div class="col-md-2">
+                    <input type="date" class="form-control" name='start_date'>
+                </div>
+                <div class="col-md-2">
+                    <input type="date" class="form-control" name='stop_date'>
+                </div>
+            </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">Find</button>
+                </div>
+      </form> 
+          <div>
+            <table class="table table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Log Number</th>
+                    <th scope="col">Vehicle</th>
+                    {% if request.user.is_superuser %}
+                    <th scope="col">Edit</th>
+                    {% endif %}
+ 
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+            {% for fuellog in fuellogs %}
+                <tr>
+                  <td>
+                    {{ forloop.counter }}
+                  </td>
+                  <td><a href="{% url 'app:log-detail' fuellog.pk %}">{{ fuellog.no }} </td> 
+                  <td> {{ fuellog.veh }} </td> 
+          {% if request.user.is_superuser %}
+                  <td> <a
+                        href="#">Edit</a></td>
+          {% endif %}
+
+                   <td> <a href="#">Delete</a></td></tr>
+                </td>
+            {% empty %}
+                <td>No fuel logs yet.</td>
+            {% endfor %}
+            </table>
+            {% if is_paginated %}
+              <ul class="pagination">
+                {% if page_obj.has_previous %}
+                  <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                  <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in paginator.page_range %}
+                  {% if page_obj.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                  {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                  {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                  <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                  <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+              </ul>
+            {% endif %}
+
+        <p>
+            <a class="btn btn-primary " href="{% url 'app:fuel-log' %}">Add log</a>
+        </p>
+
+    </div>
+          </div>
+        </div>
+      
+      </section>  
+    </section>
+    <!--main content end-->
+  </section>
+  <!-- container section end -->
+  <!-- javascripts -->
+  <script src="{% static 'app/js/jquery.js' %}"></script>
+  <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+  <!-- nice scroll -->
+  <script src="{% static 'app/js/jquery.scrollTo.min.js' %}"></script>
+  <script src="{% static 'app/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
+  <!--custome script for all page-->
+  <script src="{% static 'app/js/scripts.js' %}"></script>
+
+  
+{% endblock %}
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

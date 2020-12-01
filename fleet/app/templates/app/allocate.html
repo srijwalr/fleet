@@ -1,0 +1,45 @@
+{% extends "app/msfleet.html" %}
+{% block title %}:: Driver Detail::{% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+    <!--sidebar end-->
+{% block content %}
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+
+          <div class="col-lg-12">
+            <h2>Fleet Details</h2>
+              <form action="." method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{form|crispy}}
+              <input style = "border-radius:6px;" type='submit' value='Assign'>
+          </form>
+        </div>
+      
+    </section>
+    <!--main content end-->
+  </section>
+  <!-- container section end -->
+  <!-- javascripts -->
+  <script src="{% static 'app/js/jquery.js' %}"></script>
+  <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+  <!-- nice scroll -->
+  <script src="{% static 'app/js/jquery.scrollTo.min.js' %}"></script>
+  <script src="{% static 'app/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
+  <!--custome script for all page-->
+  <script src="{% static 'app/js/scripts.js' %}"></script>
+
+  <style>
+    form{
+      width: 500px;
+    }
+  </style>
+  
+{% endblock %}
+</body>
+
+</html>
+

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/favicon.png">
+  {% load staticfiles %}
+  {% load crispy_forms_tags %}
+
+  
+
+
+  <title>{% block title %}:: Fleet ::{% endblock %}</title>
+  <!-- Bootstrap CSS -->
+  <link href="{% static 'app/css/bootstrap.min.css' %}" rel="stylesheet" >
+  <!-- bootstrap theme -->
+  <link href="{% static 'app/css/bootstrap-theme.css' %}" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="{% static 'app/css/elegant-icons-style.css' %}" rel="stylesheet" >
+  <link href="{% static 'app/css/font-awesome.min.css' %}" rel="stylesheet" >
+  <!-- Custom styles -->
+  
+  <link href="{% static 'app/css/style1.css' %}" rel="stylesheet">
+  <link href="{% static 'app/css/style-responsive.css' %}" rel="stylesheet" >
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+  <!--[if lt IE 9]>
+      <script src="{% static 'js/html5shiv.js' %}"></script>
+      <script src="{% static 'js/respond.min.js' %}"></script>
+      <script src="{% static 'js/lte-ie7.js' %}"></script>
+    <![endif]--> 
+
+</head>
+
+{% if request.user.usrd_usrcatpntr.id != 8 %}
+
+<body>
+  <!-- container section start -->
+  <section id="container" class="">
+    <!--header start-->
+
+    <header class="header dark-bg">
+      <div class="toggle-nav">
+        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+      </div>
+
+      <!--logo start-->
+          <a href="{% url 'app:fleet' %}"><img class = "logo" src="{% static 'newlogo.png' %}" /></a>
+      <!--logo end-->
+      <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'app:fleet-list' %}">
+          <div class="form-group">
+            <input type="text" class="form-control" name="q" value="{{ request.GET.q }}">
+          </div>
+        <button type="submit" class="btn btn-default">Search</button>
+      </form>
+      <div class="top-nav notification-row">
+        <!-- notificatoin dropdown start-->
+        <ul class="nav pull-right top-menu">
+
+          <!-- user login dropdown start-->
+          <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span>{{ user.usrd_region }}</span>
+                            <span>{{ user.username }}</span>
+                            <b class="caret"></b>
+                        </a>
+            <ul class="dropdown-menu extended logout">
+              <div class="log-arrow-up"></div>
+              <li class="eborder-top">
+                <a href="#"><i class="icon_profile"></i> My Profile</a>
+              </li>
+              <li>
+                <a href="{% url 'app:signout' %}"><i class="icon_key_alt"></i> Log Out</a>
+              </li>
+            </ul>
+          </li>
+          <!-- user login dropdown end -->
+        </ul>
+        <!-- notificatoin dropdown end-->
+      </div>
+    </header>
+    <!--header end-->
+    <!--sidebar start-->  
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+          <li class="">
+            <a class="" href="{% url 'app:fleet' %}">
+                          <i class="icon_house"></i>
+                          <span>Fleet Home</span>
+                      </a>
+          </li>
+          <li class="">
+            <a class="" href="{% url 'app:driver-list' %}">
+                          <i class="icon_contacts"></i>
+                          <span>Driver Home</span>
+                      </a>
+          </li>
+
+          <li class="sub-menu">
+            <a href="javascript:;" class="">
+                          <i class="fa fa-user"></i>
+                          <span>New Driver</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+            <ul class="sub">
+              <li><a class="" href="{% url 'app:pdriver' %}">Permanent</a></li>
+              <li><a class="" href="{% url 'app:tdriver' %}"><span>Temporary</span></a></li>
+            </ul>
+          </li>
+
+
+          {% if request.user.is_superuser %}
+   
+
+          <li class="">
+            <a class="" href="{% url 'app:fleet-add' %}">
+                          <i class="fa fa-plus-circle"></i>
+                          <span>New Fleet</span>
+                      </a>
+          </li>
+
+   
+{% comment %} 
+          <li class="">
+            <a class="" href="{% url 'app:month' %}">
+                          <i class="fa fa-plus-circle"></i>
+                          <span>Trip Report</span>
+                      </a>
+          </li> {% endcomment %}
+
+
+        {% endif %}
+
+        {% if not request.user.is_superuser %}
+
+
+          {% comment %} 
+          <li class="">
+            <a class="" href="{% url 'app:tyre-add' %}">
+                          <i class="icon_circle-slelected "></i>
+                          <span>New Tyre</span>
+                      </a>
+          </li> {% endcomment %}
+
+          <li class="">
+            <a class="" href="{% url 'app:trip-list' %}">
+                          <i class="fa fa-exchange"></i>
+                          <span>Tripbook</span>
+                      </a>
+          </li>
+
+          <li class="">
+            <a class="" href="{% url 'app:logs' %}">
+                          <i class="icon_document"></i>
+                          <span>Fuel Logs</span>
+                      </a>
+          </li>
+
+        {% endif %}
+  
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+
+
+    <!--sidebar end-->
+{% block content %}
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 style = "color: #000" class="page-header"><i class="fa fa-truck"></i> FLEET MANAGEMENT</h3>
+          </div>
+        </div>
+
+<!-- <div class="card w-75">
+  <div class="card-body">
+    <h5 class="card-title">USER</h5>
+    <p style = "color: #fff" class="card-text">Click here to create a user</p>
+    <a href="#" class="btn btn-primary">Create User</a>
+  </div>
+</div>
+<br>
+<br> -->        
+
+
+
+
+
+        <!-- page end-->
+      </section>  
+    </section>
+    <!--main content end-->
+  </section>
+  <!-- container section end -->
+
+  <!-- javascripts -->
+
+
+  <script src="{% static 'app/js/jquery.js' %}"></script>
+  <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+  <!-- nice scroll -->
+  <script src="{% static 'app/js/jquery.scrollTo.min.js' %}"></script>
+  <script src="{% static 'app/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
+  <!--custome script for all page-->
+  <script src="{% static 'app/js/scripts.js' %}"></script>
+{% endblock %}
+</body>
+
+{% else %}
+
+
+<body>
+  <!-- container section start -->
+  <section id="container" class="">
+    <!--header start-->
+
+    <header class="header dark-bg">
+
+      <!--logo start-->
+          <a href="{% url 'app:fleet' %}"><img class = "logo" src="{% static 'newlogo.png' %}" /></a>
+          <div class="top-nav notification-row">
+                  <!-- notificatoin dropdown start-->
+                  <ul class="nav pull-right top-menu">
+
+                    <!-- user login dropdown start-->
+                    <li class="dropdown">
+                      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                      <span>{{ user.usrd_region }}</span>
+                                      <span>{{ user.username }}</span>
+                                      <b class="caret"></b>
+                                  </a>
+                      <ul class="dropdown-menu extended logout">
+                        <div class="log-arrow-up"></div>
+                        <li class="eborder-top">
+                          <a href="#"><i class="icon_profile"></i> My Profile</a>
+                        </li>
+                        <li>
+                          <a href="{% url 'app:signout' %}"><i class="icon_key_alt"></i> Log Out</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <!-- user login dropdown end -->
+                  </ul>
+          </div>
+    </header>
+
+
+    
+                  <!-- notificatoin dropdown end-->
+            <div class="jumbotron jumbotron-fluid">
+             <div class="container">
+                  <section class="wrapper">
+                          <div class="row">
+                            <div class="col-lg-12">
+                             <section class="panel">
+                              <header class="panel-heading">
+                                VEHICLE IN/OUT 
+                              </header>
+                                <div class="panel-body">
+                                  {% if error_message %}
+                                      <p><strong>{{ error_message }}</strong></p>
+                                  {% endif %}
+                                <form class="form-inline" role="search" method="get" action="{% url 'app:entry' %}">
+                                  <div class="form-group mb-2">
+                                    <label class="sr-only">Vehicle number</label>
+                                          <input type="text" class="form-control" name="q" placeholder="Vehicle Number" value="{{ request.GET.q }}">
+                                  </div>
+
+                                  <button type="submit" class="btn btn-primary btn-lg">Enter</button>
+                                  
+                                </form>
+                                </div>
+                              </section>
+                              </div>
+                              </div>
+                          </div>
+
+                  </section>
+              </div>
+            </div>
+
+
+
+
+  <script src="{% static 'app/js/jquery.js' %}"></script>
+  <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+  <!-- nice scroll -->
+  <script src="{% static 'app/js/jquery.scrollTo.min.js' %}"></script>
+  <script src="{% static 'app/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
+  <!--custome script for all page-->
+  <script src="{% static 'app/js/scripts.js' %}"></script>
+
+
+{% endif %}
+
+
+
+  
+</body>
+
+
+
+</html>
